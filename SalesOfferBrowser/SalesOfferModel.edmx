@@ -1,0 +1,2947 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SalesOfferModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValidatorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChannelPrintName">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="ChannelId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Collector">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AvatarID" Type="int" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ValidFrom" Type="datetime" Nullable="false" />
+          <Property Name="ValidUntil" Type="datetime" />
+          <Property Name="DefaultCategoryId" Type="int" />
+          <Property Name="StockRelated" Type="bit" Nullable="false" />
+          <Property Name="LedgerRelated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollectorName">
+          <Key>
+            <PropertyRef Name="CollectorId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="CollectorId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AvatarId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="NameDay" Type="int" />
+          <Property Name="FileAs" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="RealAddrInherited" Type="bit" Nullable="false" />
+          <Property Name="RealCountryId" Type="nchar" MaxLength="2" />
+          <Property Name="RealStreet" Type="nvarchar" MaxLength="800" />
+          <Property Name="RealCity" Type="nvarchar" MaxLength="128" />
+          <Property Name="RealRegion" Type="nvarchar" MaxLength="32" />
+          <Property Name="RealZip" Type="nvarchar" MaxLength="12" />
+          <Property Name="RealAddress" Type="nvarchar(max)" />
+          <Property Name="PostAddrReal" Type="bit" Nullable="false" />
+          <Property Name="PostAddrInherited" Type="bit" Nullable="false" />
+          <Property Name="PostCountryId" Type="nchar" MaxLength="2" />
+          <Property Name="PostStreet" Type="nvarchar" MaxLength="800" />
+          <Property Name="PostCity" Type="nvarchar" MaxLength="128" />
+          <Property Name="PostRegion" Type="nvarchar" MaxLength="32" />
+          <Property Name="PostZip" Type="nvarchar" MaxLength="12" />
+          <Property Name="PostAddress" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="GLN" Type="nvarchar" MaxLength="13" />
+          <Property Name="ExciseAuthorisationNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceAddress" Type="bit" Nullable="false" />
+          <Property Name="InvoicePostAddress" Type="bit" Nullable="false" />
+          <Property Name="VoucherName" Type="nvarchar" MaxLength="80" />
+          <Property Name="RealDistrict" Type="nvarchar" MaxLength="100" />
+          <Property Name="RealPublicPlaceName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RealPublicPlaceKind" Type="nvarchar" MaxLength="100" />
+          <Property Name="RealPublicPlaceNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="RealBuilding" Type="nvarchar" MaxLength="100" />
+          <Property Name="RealStairWay" Type="nvarchar" MaxLength="100" />
+          <Property Name="RealStorey" Type="nvarchar" MaxLength="100" />
+          <Property Name="RealDoorNumber" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FileStore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SrcAvatarId" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="AccessLevelId" Type="int" Nullable="false" />
+          <Property Name="IsGenerated" Type="bit" Nullable="false" />
+          <Property Name="IsArchiveable" Type="bit" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OriginalName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OriginalDate" Type="datetime" />
+          <Property Name="FileExtension" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ODMAID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ArchiveDb" Type="nvarchar" MaxLength="255" />
+          <Property Name="Keywords" Type="nvarchar(max)" />
+          <Property Name="LinkedText" Type="nvarchar(max)" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+          <Property Name="IsSigned" Type="bit" />
+        </EntityType>
+        <EntityType Name="Measure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AvatarId" Type="int" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeasureSign">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+            <PropertyRef Name="MeasureId" />
+          </Key>
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="MeasureId" Type="int" Nullable="false" />
+          <Property Name="Sign" Type="nvarchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AvatarId" Type="int" />
+          <Property Name="OfferFileId" Type="int" Nullable="false" />
+          <Property Name="OrdinalNumber" Type="int" Nullable="false" />
+          <Property Name="AgentPartnerId" Type="int" />
+          <Property Name="SrcProjectId" Type="int" />
+          <Property Name="MarketingChannelId" Type="int" />
+          <Property Name="VoucherNum" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="ResponsibleEmployeeId" Type="int" />
+          <Property Name="BruttoCalcMode" Type="bit" Nullable="false" />
+          <Property Name="HeadNote" Type="nvarchar(max)" />
+          <Property Name="FootNote" Type="nvarchar(max)" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" />
+          <Property Name="TransactionTypeId" Type="int" />
+          <Property Name="OutputFormat" Type="int" />
+          <Property Name="InputFormat" Type="int" />
+          <Property Name="CancellationState" Type="int" Nullable="false" />
+          <Property Name="InCoTermId" Type="nvarchar" MaxLength="3" />
+          <Property Name="InCoTermSrc" Type="nvarchar" MaxLength="50" />
+          <Property Name="InCoTermDst" Type="nvarchar" MaxLength="50" />
+          <Property Name="InCoTermDocNr" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransportModeId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="OfferFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AvatarId" Type="int" />
+          <Property Name="TaxYearId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CurrentCounter" Type="int" Nullable="false" />
+          <Property Name="VoucherSign" Type="nvarchar" MaxLength="5" />
+          <Property Name="NullVoucherNum" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="DivisionId" Type="int" Nullable="false" />
+          <Property Name="RoundItem" Type="bit" Nullable="false" />
+          <Property Name="RoundVat" Type="bit" Nullable="false" />
+          <Property Name="RoundTotal" Type="bit" Nullable="false" />
+          <Property Name="IsClosed" Type="bit" Nullable="false" />
+          <Property Name="DefaultTransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="DefaultOrderFileId" Type="int" />
+          <Property Name="DisContinued" Type="bit" Nullable="false" />
+          <Property Name="VoucherCopyEmailing" Type="bit" Nullable="false" />
+          <Property Name="PrepaymentFileId" Type="int" />
+        </EntityType>
+        <EntityType Name="OfferFileNote">
+          <Key>
+            <PropertyRef Name="OfferFileId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="OfferFileId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="HeadNote" Type="nvarchar(max)" />
+          <Property Name="FootNote" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OfferFileReport">
+          <Key>
+            <PropertyRef Name="OfferFileId" />
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="OfferFileId" Type="int" Nullable="false" />
+          <Property Name="ReportId" Type="int" Nullable="false" />
+          <Property Name="Copies" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfferItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferVersionGroupId" Type="int" Nullable="false" />
+          <Property Name="OrdinalNumber" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ReferencePartNo" Type="nvarchar" MaxLength="128" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Measure" Type="nvarchar" MaxLength="12" />
+          <Property Name="BaseUnitPrice" Type="decimal" Precision="18" Scale="7" />
+          <Property Name="OffUnitPrice" Type="decimal" Precision="18" Scale="7" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="7" />
+          <Property Name="TaxId" Type="int" />
+          <Property Name="BaseAmount" Type="money" />
+          <Property Name="OffAmount" Type="money" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="BaseTax" Type="money" />
+          <Property Name="OffTax" Type="money" />
+          <Property Name="Tax" Type="money" />
+          <Property Name="BaseTotal" Type="money" />
+          <Property Name="OffTotal" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="IsDiscountPercent" Type="bit" Nullable="false" />
+          <Property Name="IsOption" Type="bit" Nullable="false" />
+          <Property Name="DeliveryTimeValue" Type="int" />
+          <Property Name="DeliveryTimeUnit" Type="int" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="ClientPartNo" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="OfferItemCollector">
+          <Key>
+            <PropertyRef Name="OfferItemId" />
+            <PropertyRef Name="CollectorId" />
+          </Key>
+          <Property Name="OfferItemId" Type="int" Nullable="false" />
+          <Property Name="CollectorId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Percent" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="IsPercent" Type="bit" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="StockRelated" Type="bit" Nullable="false" />
+          <Property Name="LedgerRelated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfferItemProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferItemId" Type="int" Nullable="false" />
+          <Property Name="PropertyId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OfferItemSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferItemId" Type="int" Nullable="false" />
+          <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="6" />
+        </EntityType>
+        <EntityType Name="OfferLinkOffer">
+          <Key>
+            <PropertyRef Name="FromOfferId" />
+            <PropertyRef Name="ToOfferId" />
+          </Key>
+          <Property Name="FromOfferId" Type="int" Nullable="false" />
+          <Property Name="ToOfferId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfferVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferId" Type="int" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="VersionDate" Type="datetime" Nullable="false" />
+          <Property Name="IssueDate" Type="datetime" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="Value" Type="money" />
+          <Property Name="ImageFileStoreId" Type="int" />
+          <Property Name="PriceTypeId" Type="int" />
+          <Property Name="PaymentId" Type="int" />
+          <Property Name="DefaultDiscountPercent" Type="decimal" Precision="18" Scale="6" />
+        </EntityType>
+        <EntityType Name="OfferVersionGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferVersionId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="HeadNote" Type="nvarchar(max)" />
+          <Property Name="FootNote" Type="nvarchar(max)" />
+          <Property Name="CurrencyId" Type="nchar" MaxLength="3" />
+          <Property Name="BaseAmount" Type="money" />
+          <Property Name="BaseTax" Type="money" />
+          <Property Name="BaseTotal" Type="money" />
+          <Property Name="OffAmount" Type="money" />
+          <Property Name="OffTax" Type="money" />
+          <Property Name="OffTotal" Type="money" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Tax" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="PrepaymentNeeded" Type="bit" />
+          <Property Name="PrepaymentAmount" Type="money" />
+          <Property Name="PrepaymentPercent" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="PrepaymentIsPercent" Type="bit" />
+          <Property Name="PrepaymentId" Type="int" />
+          <Property Name="InvoiceCurrencyId" Type="nchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AvatarId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="PriceTypeId" Type="int" Nullable="false" />
+          <Property Name="PartNoId" Type="int" />
+          <Property Name="DefaultCurrencyId" Type="nchar" MaxLength="3" />
+          <Property Name="DefaultEcoTaxCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="VatRegistated" Type="bit" Nullable="false" />
+          <Property Name="CashAccounting" Type="bit" Nullable="false" />
+          <Property Name="DelayCostLump" Type="bit" Nullable="false" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="ReceivesEInvoiceFrom" Type="datetime" />
+          <Property Name="ReceivesEInvoiceTo" Type="datetime" />
+          <Property Name="SendsEInvoiceFrom" Type="datetime" />
+          <Property Name="SendsEInvoiceTo" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PartnerClientNo">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+            <PropertyRef Name="ClientNoId" />
+          </Key>
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="ClientNoId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PartNo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValidatorId" Type="int" Nullable="false" />
+          <Property Name="GeneratorId" Type="int" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="Required" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prompt" Type="int" Nullable="false" />
+          <Property Name="Mode" Type="int" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="ScontoDays" Type="int" Nullable="false" />
+          <Property Name="ScontoRate" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="PromptRelationType" Type="int" Nullable="false" />
+          <Property Name="InvoiceFinalizationAcquittance" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentPrintName">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AvatarId" Type="int" />
+          <Property Name="CurrencyId" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="StockCurrencyId" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="MeasureId" Type="int" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="StockManagement" Type="bit" Nullable="false" />
+          <Property Name="NetMass" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="BrtMass" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="MassQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="PriceQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="IntrastatCtId" Type="nvarchar" MaxLength="2" />
+          <Property Name="Identification" Type="int" Nullable="false" />
+          <Property Name="IdentOnOut" Type="bit" Nullable="false" />
+          <Property Name="ProductRevenuesGroupId" Type="int" Nullable="false" />
+          <Property Name="ProductBookingGroupId" Type="int" Nullable="false" />
+          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="CostPriceRate" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="ExciseMonitoring" Type="bit" Nullable="false" />
+          <Property Name="EcoTaxContainer" Type="bit" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="ValidDateNecessaryOnInput" Type="bit" Nullable="false" />
+          <Property Name="DefaultSupplier" Type="int" />
+          <Property Name="BarcodeLabelCopies" Type="int" Nullable="false" />
+          <Property Name="PackagingMeasureId" Type="int" />
+          <Property Name="PackagingQuantity" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="PackageIsOpenable" Type="bit" Nullable="false" />
+          <Property Name="StandardCosting" Type="bit" Nullable="false" />
+          <Property Name="Colli" Type="int" Nullable="false" />
+          <Property Name="BAFCN" Type="nvarchar" MaxLength="15" />
+          <Property Name="OutOfIntrastat" Type="bit" Nullable="false" />
+          <Property Name="SecondaryMeasureId" Type="int" />
+          <Property Name="SecondaryMeasureUsage" Type="int" Nullable="false" />
+          <Property Name="Mediated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductName">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductPartNo">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="PartNoId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="PartNoId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoucherAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SrcAvatarId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="PartnerId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="ContactId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+          <Property Name="CountryId" Type="nchar" MaxLength="2" />
+          <Property Name="Street" Type="nvarchar" MaxLength="800" />
+          <Property Name="City" Type="nvarchar" MaxLength="128" />
+          <Property Name="Region" Type="nvarchar" MaxLength="32" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="12" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="GLN" Type="nvarchar" MaxLength="13" />
+          <Property Name="District" Type="nvarchar" MaxLength="100" />
+          <Property Name="PublicPlaceName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PublicPlaceKind" Type="nvarchar" MaxLength="100" />
+          <Property Name="PublicPlaceNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Building" Type="nvarchar" MaxLength="100" />
+          <Property Name="StairWay" Type="nvarchar" MaxLength="100" />
+          <Property Name="Storey" Type="nvarchar" MaxLength="100" />
+          <Property Name="DoorNumber" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VoucherAddressChannel">
+          <Key>
+            <PropertyRef Name="VoucherAddressId" />
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="VoucherAddressId" Type="int" Nullable="false" />
+          <Property Name="ChannelId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="report" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoucherAddressClientNo">
+          <Key>
+            <PropertyRef Name="VoucherAddressId" />
+            <PropertyRef Name="ClientNoId" />
+          </Key>
+          <Property Name="VoucherAddressId" Type="int" Nullable="false" />
+          <Property Name="ClientNoId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="128" />
+          <Property Name="report" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="fChannelPrintNameChannel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChannelPrintName" Type="Self.ChannelPrintName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChannelPrintName">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fCollectorNameCollector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CollectorName" Type="Self.CollectorName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CollectorName">
+              <PropertyRef Name="CollectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fDepartmentPartner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fMeasureSignMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MeasureSign" Type="Self.MeasureSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeasureSign">
+              <PropertyRef Name="MeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferAgentPartner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="AgentPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferFileNoteOfferFile">
+          <End Role="OfferFile" Type="Self.OfferFile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferFileNote" Type="Self.OfferFileNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferFile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferFileNote">
+              <PropertyRef Name="OfferFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferFileReportOfferFile">
+          <End Role="OfferFile" Type="Self.OfferFile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferFileReport" Type="Self.OfferFileReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferFile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferFileReport">
+              <PropertyRef Name="OfferFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemCollectorCollector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1" />
+          <End Role="OfferItemCollector" Type="Self.OfferItemCollector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemCollector">
+              <PropertyRef Name="CollectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemCollectorOfferItem">
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItemCollector" Type="Self.OfferItemCollector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemCollector">
+              <PropertyRef Name="OfferItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemOfferVersionGroup">
+          <End Role="OfferVersionGroup" Type="Self.OfferVersionGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferVersionGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="OfferVersionGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemPropertyOfferItem">
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItemProperty" Type="Self.OfferItemProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemProperty">
+              <PropertyRef Name="OfferItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemScheduleOfferItem">
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItemSchedule" Type="Self.OfferItemSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemSchedule">
+              <PropertyRef Name="OfferItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferOfferFile">
+          <End Role="OfferFile" Type="Self.OfferFile" Multiplicity="1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferFile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="OfferFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionFileStore">
+          <End Role="FileStore" Type="Self.FileStore" Multiplicity="0..1" />
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileStore">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="ImageFileStoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionGroupOfferVersion">
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferVersionGroup" Type="Self.OfferVersionGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferVersion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersionGroup">
+              <PropertyRef Name="OfferVersionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionOffer">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="OfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionPayment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionPriceType">
+          <End Role="PriceType" Type="Self.PriceType" Multiplicity="0..1" />
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="PriceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerClientNoPartner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PartnerClientNo" Type="Self.PartnerClientNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PartnerClientNo">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerPartNo">
+          <End Role="PartNo" Type="Self.PartNo" Multiplicity="0..1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartNo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="PartNoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerPayment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerPriceType">
+          <End Role="PriceType" Type="Self.PriceType" Multiplicity="1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="PriceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPaymentPrintNamePayment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentPrintName" Type="Self.PaymentPrintName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentPrintName">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductDefaultSupplier">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DefaultSupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductNameProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductName" Type="Self.ProductName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductName">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductPackagingMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="PackagingMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductPartNoPartNo">
+          <End Role="PartNo" Type="Self.PartNo" Multiplicity="1" />
+          <End Role="ProductPartNo" Type="Self.ProductPartNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartNo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPartNo">
+              <PropertyRef Name="PartNoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductPartNoProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductPartNo" Type="Self.ProductPartNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPartNo">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductSecondaryMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SecondaryMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressChannelChannel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
+          <End Role="VoucherAddressChannel" Type="Self.VoucherAddressChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddressChannel">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressChannelVoucherAddress">
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VoucherAddressChannel" Type="Self.VoucherAddressChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddressChannel">
+              <PropertyRef Name="VoucherAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressClientNoVoucherAddress">
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VoucherAddressClientNo" Type="Self.VoucherAddressClientNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddressClientNo">
+              <PropertyRef Name="VoucherAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressContact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddress">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressDepartment">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="PartnerId" />
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddress">
+              <PropertyRef Name="PartnerId" />
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalesOfferModelStoreContainer">
+          <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChannelPrintName" EntityType="Self.ChannelPrintName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Collector" EntityType="Self.Collector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollectorName" EntityType="Self.CollectorName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileStore" EntityType="Self.FileStore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Measure" EntityType="Self.Measure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeasureSign" EntityType="Self.MeasureSign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferFile" EntityType="Self.OfferFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferFileNote" EntityType="Self.OfferFileNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferFileReport" EntityType="Self.OfferFileReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferItem" EntityType="Self.OfferItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferItemCollector" EntityType="Self.OfferItemCollector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferItemProperty" EntityType="Self.OfferItemProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferItemSchedule" EntityType="Self.OfferItemSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferLinkOffer" EntityType="Self.OfferLinkOffer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferVersion" EntityType="Self.OfferVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferVersionGroup" EntityType="Self.OfferVersionGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerClientNo" EntityType="Self.PartnerClientNo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartNo" EntityType="Self.PartNo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentPrintName" EntityType="Self.PaymentPrintName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceType" EntityType="Self.PriceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductName" EntityType="Self.ProductName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductPartNo" EntityType="Self.ProductPartNo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoucherAddress" EntityType="Self.VoucherAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoucherAddressChannel" EntityType="Self.VoucherAddressChannel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoucherAddressClientNo" EntityType="Self.VoucherAddressClientNo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fChannelPrintNameChannel" Association="Self.fChannelPrintNameChannel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="ChannelPrintName" EntitySet="ChannelPrintName" />
+          </AssociationSet>
+          <AssociationSet Name="fCollectorNameCollector" Association="Self.fCollectorNameCollector">
+            <End Role="Collector" EntitySet="Collector" />
+            <End Role="CollectorName" EntitySet="CollectorName" />
+          </AssociationSet>
+          <AssociationSet Name="fDepartmentPartner" Association="Self.fDepartmentPartner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="fMeasureSignMeasure" Association="Self.fMeasureSignMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="MeasureSign" EntitySet="MeasureSign" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferAgentPartner" Association="Self.fOfferAgentPartner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferFileNoteOfferFile" Association="Self.fOfferFileNoteOfferFile">
+            <End Role="OfferFile" EntitySet="OfferFile" />
+            <End Role="OfferFileNote" EntitySet="OfferFileNote" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferFileReportOfferFile" Association="Self.fOfferFileReportOfferFile">
+            <End Role="OfferFile" EntitySet="OfferFile" />
+            <End Role="OfferFileReport" EntitySet="OfferFileReport" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemCollectorCollector" Association="Self.fOfferItemCollectorCollector">
+            <End Role="Collector" EntitySet="Collector" />
+            <End Role="OfferItemCollector" EntitySet="OfferItemCollector" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemCollectorOfferItem" Association="Self.fOfferItemCollectorOfferItem">
+            <End Role="OfferItem" EntitySet="OfferItem" />
+            <End Role="OfferItemCollector" EntitySet="OfferItemCollector" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemOfferVersionGroup" Association="Self.fOfferItemOfferVersionGroup">
+            <End Role="OfferVersionGroup" EntitySet="OfferVersionGroup" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemProduct" Association="Self.fOfferItemProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemPropertyOfferItem" Association="Self.fOfferItemPropertyOfferItem">
+            <End Role="OfferItem" EntitySet="OfferItem" />
+            <End Role="OfferItemProperty" EntitySet="OfferItemProperty" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemScheduleOfferItem" Association="Self.fOfferItemScheduleOfferItem">
+            <End Role="OfferItem" EntitySet="OfferItem" />
+            <End Role="OfferItemSchedule" EntitySet="OfferItemSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferOfferFile" Association="Self.fOfferOfferFile">
+            <End Role="OfferFile" EntitySet="OfferFile" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionFileStore" Association="Self.fOfferVersionFileStore">
+            <End Role="FileStore" EntitySet="FileStore" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionGroupOfferVersion" Association="Self.fOfferVersionGroupOfferVersion">
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+            <End Role="OfferVersionGroup" EntitySet="OfferVersionGroup" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionOffer" Association="Self.fOfferVersionOffer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionPayment" Association="Self.fOfferVersionPayment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionPriceType" Association="Self.fOfferVersionPriceType">
+            <End Role="PriceType" EntitySet="PriceType" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerClientNoPartner" Association="Self.fPartnerClientNoPartner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="PartnerClientNo" EntitySet="PartnerClientNo" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerPartNo" Association="Self.fPartnerPartNo">
+            <End Role="PartNo" EntitySet="PartNo" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerPayment" Association="Self.fPartnerPayment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerPriceType" Association="Self.fPartnerPriceType">
+            <End Role="PriceType" EntitySet="PriceType" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="fPaymentPrintNamePayment" Association="Self.fPaymentPrintNamePayment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="PaymentPrintName" EntitySet="PaymentPrintName" />
+          </AssociationSet>
+          <AssociationSet Name="fProductDefaultSupplier" Association="Self.fProductDefaultSupplier">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fProductMeasure" Association="Self.fProductMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fProductNameProduct" Association="Self.fProductNameProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductName" EntitySet="ProductName" />
+          </AssociationSet>
+          <AssociationSet Name="fProductPackagingMeasure" Association="Self.fProductPackagingMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fProductPartNoPartNo" Association="Self.fProductPartNoPartNo">
+            <End Role="PartNo" EntitySet="PartNo" />
+            <End Role="ProductPartNo" EntitySet="ProductPartNo" />
+          </AssociationSet>
+          <AssociationSet Name="fProductPartNoProduct" Association="Self.fProductPartNoProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPartNo" EntitySet="ProductPartNo" />
+          </AssociationSet>
+          <AssociationSet Name="fProductSecondaryMeasure" Association="Self.fProductSecondaryMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressChannelChannel" Association="Self.fVoucherAddressChannelChannel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="VoucherAddressChannel" EntitySet="VoucherAddressChannel" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressChannelVoucherAddress" Association="Self.fVoucherAddressChannelVoucherAddress">
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+            <End Role="VoucherAddressChannel" EntitySet="VoucherAddressChannel" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressClientNoVoucherAddress" Association="Self.fVoucherAddressClientNoVoucherAddress">
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+            <End Role="VoucherAddressClientNo" EntitySet="VoucherAddressClientNo" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressContact" Association="Self.fVoucherAddressContact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressDepartment" Association="Self.fVoucherAddressDepartment">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalesOfferModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ValidatorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChannelPrintName" Relationship="Self.fChannelPrintNameChannel" FromRole="Channel" ToRole="ChannelPrintName" />
+          <NavigationProperty Name="VoucherAddressChannel" Relationship="Self.fVoucherAddressChannelChannel" FromRole="Channel" ToRole="VoucherAddressChannel" />
+        </EntityType>
+        <EntityType Name="ChannelPrintName">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="ChannelId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Channel" Relationship="Self.fChannelPrintNameChannel" FromRole="ChannelPrintName" ToRole="Channel" />
+        </EntityType>
+        <EntityType Name="Collector">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AvatarID" Type="Int32" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ValidFrom" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ValidUntil" Type="DateTime" Precision="3" />
+          <Property Name="DefaultCategoryId" Type="Int32" />
+          <Property Name="StockRelated" Type="Boolean" Nullable="false" />
+          <Property Name="LedgerRelated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CollectorName" Relationship="Self.fCollectorNameCollector" FromRole="Collector" ToRole="CollectorName" />
+          <NavigationProperty Name="OfferItemCollector" Relationship="Self.fOfferItemCollectorCollector" FromRole="Collector" ToRole="OfferItemCollector" />
+        </EntityType>
+        <EntityType Name="CollectorName">
+          <Key>
+            <PropertyRef Name="CollectorId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="CollectorId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Collector" Relationship="Self.fCollectorNameCollector" FromRole="CollectorName" ToRole="Collector" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="AvatarId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="NameDay" Type="Int32" />
+          <Property Name="FileAs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VoucherAddress" Relationship="Self.fVoucherAddressContact" FromRole="Contact" ToRole="VoucherAddress" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="RealAddrInherited" Type="Boolean" Nullable="false" />
+          <Property Name="RealCountryId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="RealStreet" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="RealCity" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RealRegion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="RealZip" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="RealAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostAddrReal" Type="Boolean" Nullable="false" />
+          <Property Name="PostAddrInherited" Type="Boolean" Nullable="false" />
+          <Property Name="PostCountryId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="PostStreet" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="PostCity" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PostRegion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="PostZip" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="PostAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GLN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="ExciseAuthorisationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceAddress" Type="Boolean" Nullable="false" />
+          <Property Name="InvoicePostAddress" Type="Boolean" Nullable="false" />
+          <Property Name="VoucherName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="RealDistrict" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RealPublicPlaceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RealPublicPlaceKind" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RealPublicPlaceNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RealBuilding" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RealStairWay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RealStorey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RealDoorNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Partner" Relationship="Self.fDepartmentPartner" FromRole="Department" ToRole="Partner" />
+          <NavigationProperty Name="VoucherAddress" Relationship="Self.fVoucherAddressDepartment" FromRole="Department" ToRole="VoucherAddress" />
+        </EntityType>
+        <EntityType Name="FileStore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="SrcAvatarId" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AccessLevelId" Type="Int32" Nullable="false" />
+          <Property Name="IsGenerated" Type="Boolean" Nullable="false" />
+          <Property Name="IsArchiveable" Type="Boolean" Nullable="false" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OriginalName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalDate" Type="DateTime" Precision="3" />
+          <Property Name="FileExtension" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ODMAID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveDb" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsSigned" Type="Boolean" />
+          <NavigationProperty Name="OfferVersion" Relationship="Self.fOfferVersionFileStore" FromRole="FileStore" ToRole="OfferVersion" />
+        </EntityType>
+        <EntityType Name="Measure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AvatarId" Type="Int32" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MeasureSign" Relationship="Self.fMeasureSignMeasure" FromRole="Measure" ToRole="MeasureSign" />
+          <NavigationProperty Name="Product" Relationship="Self.fProductMeasure" FromRole="Measure" ToRole="Product" />
+          <NavigationProperty Name="Product1" Relationship="Self.fProductPackagingMeasure" FromRole="Measure" ToRole="Product" />
+          <NavigationProperty Name="Product2" Relationship="Self.fProductSecondaryMeasure" FromRole="Measure" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="MeasureSign">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+            <PropertyRef Name="MeasureId" />
+          </Key>
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MeasureId" Type="Int32" Nullable="false" />
+          <Property Name="Sign" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Measure" Relationship="Self.fMeasureSignMeasure" FromRole="MeasureSign" ToRole="Measure" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="AvatarId" Type="Int32" />
+          <Property Name="OfferFileId" Type="Int32" Nullable="false" />
+          <Property Name="OrdinalNumber" Type="Int32" Nullable="false" />
+          <Property Name="AgentPartnerId" Type="Int32" />
+          <Property Name="SrcProjectId" Type="Int32" />
+          <Property Name="MarketingChannelId" Type="Int32" />
+          <Property Name="VoucherNum" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="ResponsibleEmployeeId" Type="Int32" />
+          <Property Name="BruttoCalcMode" Type="Boolean" Nullable="false" />
+          <Property Name="HeadNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FootNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="TransactionTypeId" Type="Int32" />
+          <Property Name="OutputFormat" Type="Int32" />
+          <Property Name="InputFormat" Type="Int32" />
+          <Property Name="CancellationState" Type="Int32" Nullable="false" />
+          <Property Name="InCoTermId" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="InCoTermSrc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InCoTermDst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InCoTermDocNr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransportModeId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OfferFile" Relationship="Self.fOfferOfferFile" FromRole="Offer" ToRole="OfferFile" />
+          <NavigationProperty Name="OfferVersion" Relationship="Self.fOfferVersionOffer" FromRole="Offer" ToRole="OfferVersion" />
+        </EntityType>
+        <EntityType Name="OfferFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="AvatarId" Type="Int32" />
+          <Property Name="TaxYearId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentCounter" Type="Int32" Nullable="false" />
+          <Property Name="VoucherSign" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NullVoucherNum" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionId" Type="Int32" Nullable="false" />
+          <Property Name="RoundItem" Type="Boolean" Nullable="false" />
+          <Property Name="RoundVat" Type="Boolean" Nullable="false" />
+          <Property Name="RoundTotal" Type="Boolean" Nullable="false" />
+          <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+          <Property Name="DefaultTransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DefaultOrderFileId" Type="Int32" />
+          <Property Name="DisContinued" Type="Boolean" Nullable="false" />
+          <Property Name="VoucherCopyEmailing" Type="Boolean" Nullable="false" />
+          <Property Name="PrepaymentFileId" Type="Int32" />
+          <NavigationProperty Name="Offer" Relationship="Self.fOfferOfferFile" FromRole="OfferFile" ToRole="Offer" />
+          <NavigationProperty Name="OfferFileNote" Relationship="Self.fOfferFileNoteOfferFile" FromRole="OfferFile" ToRole="OfferFileNote" />
+          <NavigationProperty Name="OfferFileReport" Relationship="Self.fOfferFileReportOfferFile" FromRole="OfferFile" ToRole="OfferFileReport" />
+        </EntityType>
+        <EntityType Name="OfferFileNote">
+          <Key>
+            <PropertyRef Name="OfferFileId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="OfferFileId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="HeadNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FootNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OfferFile" Relationship="Self.fOfferFileNoteOfferFile" FromRole="OfferFileNote" ToRole="OfferFile" />
+        </EntityType>
+        <EntityType Name="OfferFileReport">
+          <Key>
+            <PropertyRef Name="OfferFileId" />
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="OfferFileId" Type="Int32" Nullable="false" />
+          <Property Name="ReportId" Type="Int32" Nullable="false" />
+          <Property Name="Copies" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OfferFile" Relationship="Self.fOfferFileReportOfferFile" FromRole="OfferFileReport" ToRole="OfferFile" />
+        </EntityType>
+        <EntityType Name="OfferItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferVersionGroupId" Type="Int32" Nullable="false" />
+          <Property Name="OrdinalNumber" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ReferencePartNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Measure" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="BaseUnitPrice" Type="Decimal" Precision="18" Scale="7" />
+          <Property Name="OffUnitPrice" Type="Decimal" Precision="18" Scale="7" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="7" />
+          <Property Name="TaxId" Type="Int32" />
+          <Property Name="BaseAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OffAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BaseTax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OffTax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BaseTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OffTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="IsDiscountPercent" Type="Boolean" Nullable="false" />
+          <Property Name="IsOption" Type="Boolean" Nullable="false" />
+          <Property Name="DeliveryTimeValue" Type="Int32" />
+          <Property Name="DeliveryTimeUnit" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPartNo" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OfferItemCollector" Relationship="Self.fOfferItemCollectorOfferItem" FromRole="OfferItem" ToRole="OfferItemCollector" />
+          <NavigationProperty Name="OfferVersionGroup" Relationship="Self.fOfferItemOfferVersionGroup" FromRole="OfferItem" ToRole="OfferVersionGroup" />
+          <NavigationProperty Name="Product" Relationship="Self.fOfferItemProduct" FromRole="OfferItem" ToRole="Product" />
+          <NavigationProperty Name="OfferItemProperty" Relationship="Self.fOfferItemPropertyOfferItem" FromRole="OfferItem" ToRole="OfferItemProperty" />
+          <NavigationProperty Name="OfferItemSchedule" Relationship="Self.fOfferItemScheduleOfferItem" FromRole="OfferItem" ToRole="OfferItemSchedule" />
+        </EntityType>
+        <EntityType Name="OfferItemCollector">
+          <Key>
+            <PropertyRef Name="OfferItemId" />
+            <PropertyRef Name="CollectorId" />
+          </Key>
+          <Property Name="OfferItemId" Type="Int32" Nullable="false" />
+          <Property Name="CollectorId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Percent" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="IsPercent" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="StockRelated" Type="Boolean" Nullable="false" />
+          <Property Name="LedgerRelated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Collector" Relationship="Self.fOfferItemCollectorCollector" FromRole="OfferItemCollector" ToRole="Collector" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.fOfferItemCollectorOfferItem" FromRole="OfferItemCollector" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="OfferItemProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferItemId" Type="Int32" Nullable="false" />
+          <Property Name="PropertyId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.fOfferItemPropertyOfferItem" FromRole="OfferItemProperty" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="OfferItemSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferItemId" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="6" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.fOfferItemScheduleOfferItem" FromRole="OfferItemSchedule" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="OfferLinkOffer">
+          <Key>
+            <PropertyRef Name="FromOfferId" />
+            <PropertyRef Name="ToOfferId" />
+          </Key>
+          <Property Name="FromOfferId" Type="Int32" Nullable="false" />
+          <Property Name="ToOfferId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfferVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferId" Type="Int32" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="VersionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IssueDate" Type="DateTime" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ImageFileStoreId" Type="Int32" />
+          <Property Name="PriceTypeId" Type="Int32" />
+          <Property Name="PaymentId" Type="Int32" />
+          <Property Name="DefaultDiscountPercent" Type="Decimal" Precision="18" Scale="6" />
+          <NavigationProperty Name="FileStore" Relationship="Self.fOfferVersionFileStore" FromRole="OfferVersion" ToRole="FileStore" />
+          <NavigationProperty Name="Offer" Relationship="Self.fOfferVersionOffer" FromRole="OfferVersion" ToRole="Offer" />
+          <NavigationProperty Name="OfferVersionGroup" Relationship="Self.fOfferVersionGroupOfferVersion" FromRole="OfferVersion" ToRole="OfferVersionGroup" />
+          <NavigationProperty Name="Payment" Relationship="Self.fOfferVersionPayment" FromRole="OfferVersion" ToRole="Payment" />
+          <NavigationProperty Name="PriceType" Relationship="Self.fOfferVersionPriceType" FromRole="OfferVersion" ToRole="PriceType" />
+        </EntityType>
+        <EntityType Name="OfferVersionGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferVersionId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="HeadNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FootNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyId" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="BaseAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BaseTax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BaseTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OffAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OffTax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OffTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrepaymentNeeded" Type="Boolean" />
+          <Property Name="PrepaymentAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrepaymentPercent" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="PrepaymentIsPercent" Type="Boolean" />
+          <Property Name="PrepaymentId" Type="Int32" />
+          <Property Name="InvoiceCurrencyId" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.fOfferItemOfferVersionGroup" FromRole="OfferVersionGroup" ToRole="OfferItem" />
+          <NavigationProperty Name="OfferVersion" Relationship="Self.fOfferVersionGroupOfferVersion" FromRole="OfferVersionGroup" ToRole="OfferVersion" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="AvatarId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="PriceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PartNoId" Type="Int32" />
+          <Property Name="DefaultCurrencyId" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="DefaultEcoTaxCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="VatRegistated" Type="Boolean" Nullable="false" />
+          <Property Name="CashAccounting" Type="Boolean" Nullable="false" />
+          <Property Name="DelayCostLump" Type="Boolean" Nullable="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="ReceivesEInvoiceFrom" Type="DateTime" Precision="3" />
+          <Property Name="ReceivesEInvoiceTo" Type="DateTime" Precision="3" />
+          <Property Name="SendsEInvoiceFrom" Type="DateTime" Precision="3" />
+          <Property Name="SendsEInvoiceTo" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Department" Relationship="Self.fDepartmentPartner" FromRole="Partner" ToRole="Department" />
+          <NavigationProperty Name="Offer" Relationship="Self.fOfferAgentPartner" FromRole="Partner" ToRole="Offer" />
+          <NavigationProperty Name="PartnerClientNo" Relationship="Self.fPartnerClientNoPartner" FromRole="Partner" ToRole="PartnerClientNo" />
+          <NavigationProperty Name="PartNo" Relationship="Self.fPartnerPartNo" FromRole="Partner" ToRole="PartNo" />
+          <NavigationProperty Name="Payment" Relationship="Self.fPartnerPayment" FromRole="Partner" ToRole="Payment" />
+          <NavigationProperty Name="PriceType" Relationship="Self.fPartnerPriceType" FromRole="Partner" ToRole="PriceType" />
+          <NavigationProperty Name="Product" Relationship="Self.fProductDefaultSupplier" FromRole="Partner" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="PartnerClientNo">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+            <PropertyRef Name="ClientNoId" />
+          </Key>
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="ClientNoId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Partner" Relationship="Self.fPartnerClientNoPartner" FromRole="PartnerClientNo" ToRole="Partner" />
+        </EntityType>
+        <EntityType Name="PartNo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ValidatorId" Type="Int32" Nullable="false" />
+          <Property Name="GeneratorId" Type="Int32" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="Required" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Partner" Relationship="Self.fPartnerPartNo" FromRole="PartNo" ToRole="Partner" />
+          <NavigationProperty Name="ProductPartNo" Relationship="Self.fProductPartNoPartNo" FromRole="PartNo" ToRole="ProductPartNo" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prompt" Type="Int32" Nullable="false" />
+          <Property Name="Mode" Type="Int32" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="ScontoDays" Type="Int32" Nullable="false" />
+          <Property Name="ScontoRate" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="PromptRelationType" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceFinalizationAcquittance" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OfferVersion" Relationship="Self.fOfferVersionPayment" FromRole="Payment" ToRole="OfferVersion" />
+          <NavigationProperty Name="Partner" Relationship="Self.fPartnerPayment" FromRole="Payment" ToRole="Partner" />
+          <NavigationProperty Name="PaymentPrintName" Relationship="Self.fPaymentPrintNamePayment" FromRole="Payment" ToRole="PaymentPrintName" />
+        </EntityType>
+        <EntityType Name="PaymentPrintName">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Payment" Relationship="Self.fPaymentPrintNamePayment" FromRole="PaymentPrintName" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="PriceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OfferVersion" Relationship="Self.fOfferVersionPriceType" FromRole="PriceType" ToRole="OfferVersion" />
+          <NavigationProperty Name="Partner" Relationship="Self.fPartnerPriceType" FromRole="PriceType" ToRole="Partner" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="AvatarId" Type="Int32" />
+          <Property Name="CurrencyId" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="StockCurrencyId" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MeasureId" Type="Int32" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="StockManagement" Type="Boolean" Nullable="false" />
+          <Property Name="NetMass" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="BrtMass" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="MassQty" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="PriceQty" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="IntrastatCtId" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Identification" Type="Int32" Nullable="false" />
+          <Property Name="IdentOnOut" Type="Boolean" Nullable="false" />
+          <Property Name="ProductRevenuesGroupId" Type="Int32" Nullable="false" />
+          <Property Name="ProductBookingGroupId" Type="Int32" Nullable="false" />
+          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="CostPriceRate" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="ExciseMonitoring" Type="Boolean" Nullable="false" />
+          <Property Name="EcoTaxContainer" Type="Boolean" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValidDateNecessaryOnInput" Type="Boolean" Nullable="false" />
+          <Property Name="DefaultSupplier" Type="Int32" />
+          <Property Name="BarcodeLabelCopies" Type="Int32" Nullable="false" />
+          <Property Name="PackagingMeasureId" Type="Int32" />
+          <Property Name="PackagingQuantity" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="PackageIsOpenable" Type="Boolean" Nullable="false" />
+          <Property Name="StandardCosting" Type="Boolean" Nullable="false" />
+          <Property Name="Colli" Type="Int32" Nullable="false" />
+          <Property Name="BAFCN" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="OutOfIntrastat" Type="Boolean" Nullable="false" />
+          <Property Name="SecondaryMeasureId" Type="Int32" />
+          <Property Name="SecondaryMeasureUsage" Type="Int32" Nullable="false" />
+          <Property Name="Mediated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Measure" Relationship="Self.fProductMeasure" FromRole="Product" ToRole="Measure" />
+          <NavigationProperty Name="Measure1" Relationship="Self.fProductPackagingMeasure" FromRole="Product" ToRole="Measure" />
+          <NavigationProperty Name="Measure2" Relationship="Self.fProductSecondaryMeasure" FromRole="Product" ToRole="Measure" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.fOfferItemProduct" FromRole="Product" ToRole="OfferItem" />
+          <NavigationProperty Name="Partner" Relationship="Self.fProductDefaultSupplier" FromRole="Product" ToRole="Partner" />
+          <NavigationProperty Name="ProductName" Relationship="Self.fProductNameProduct" FromRole="Product" ToRole="ProductName" />
+          <NavigationProperty Name="ProductPartNo" Relationship="Self.fProductPartNoProduct" FromRole="Product" ToRole="ProductPartNo" />
+        </EntityType>
+        <EntityType Name="ProductName">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.fProductNameProduct" FromRole="ProductName" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductPartNo">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="PartNoId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="PartNoId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PartNo" Relationship="Self.fProductPartNoPartNo" FromRole="ProductPartNo" ToRole="PartNo" />
+          <NavigationProperty Name="Product" Relationship="Self.fProductPartNoProduct" FromRole="ProductPartNo" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="VoucherAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SrcAvatarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="PartnerId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="ContactId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GLN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PublicPlaceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PublicPlaceKind" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PublicPlaceNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Building" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StairWay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Storey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DoorNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contact1" Relationship="Self.fVoucherAddressContact" FromRole="VoucherAddress" ToRole="Contact" />
+          <NavigationProperty Name="Department" Relationship="Self.fVoucherAddressDepartment" FromRole="VoucherAddress" ToRole="Department" />
+          <NavigationProperty Name="VoucherAddressChannel" Relationship="Self.fVoucherAddressChannelVoucherAddress" FromRole="VoucherAddress" ToRole="VoucherAddressChannel" />
+          <NavigationProperty Name="VoucherAddressClientNo" Relationship="Self.fVoucherAddressClientNoVoucherAddress" FromRole="VoucherAddress" ToRole="VoucherAddressClientNo" />
+        </EntityType>
+        <EntityType Name="VoucherAddressChannel">
+          <Key>
+            <PropertyRef Name="VoucherAddressId" />
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="VoucherAddressId" Type="Int32" Nullable="false" />
+          <Property Name="ChannelId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="report" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Channel" Relationship="Self.fVoucherAddressChannelChannel" FromRole="VoucherAddressChannel" ToRole="Channel" />
+          <NavigationProperty Name="VoucherAddress" Relationship="Self.fVoucherAddressChannelVoucherAddress" FromRole="VoucherAddressChannel" ToRole="VoucherAddress" />
+        </EntityType>
+        <EntityType Name="VoucherAddressClientNo">
+          <Key>
+            <PropertyRef Name="VoucherAddressId" />
+            <PropertyRef Name="ClientNoId" />
+          </Key>
+          <Property Name="VoucherAddressId" Type="Int32" Nullable="false" />
+          <Property Name="ClientNoId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="report" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="VoucherAddress" Relationship="Self.fVoucherAddressClientNoVoucherAddress" FromRole="VoucherAddressClientNo" ToRole="VoucherAddress" />
+        </EntityType>
+        <Association Name="fChannelPrintNameChannel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChannelPrintName" Type="Self.ChannelPrintName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChannelPrintName">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressChannelChannel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
+          <End Role="VoucherAddressChannel" Type="Self.VoucherAddressChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddressChannel">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fCollectorNameCollector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CollectorName" Type="Self.CollectorName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CollectorName">
+              <PropertyRef Name="CollectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemCollectorCollector">
+          <End Role="Collector" Type="Self.Collector" Multiplicity="1" />
+          <End Role="OfferItemCollector" Type="Self.OfferItemCollector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemCollector">
+              <PropertyRef Name="CollectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressContact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddress">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fDepartmentPartner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressDepartment">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="PartnerId" />
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddress">
+              <PropertyRef Name="PartnerId" />
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionFileStore">
+          <End Role="FileStore" Type="Self.FileStore" Multiplicity="0..1" />
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileStore">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="ImageFileStoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fMeasureSignMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MeasureSign" Type="Self.MeasureSign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeasureSign">
+              <PropertyRef Name="MeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductPackagingMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="PackagingMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductSecondaryMeasure">
+          <End Role="Measure" Type="Self.Measure" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SecondaryMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferAgentPartner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="AgentPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferOfferFile">
+          <End Role="OfferFile" Type="Self.OfferFile" Multiplicity="1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferFile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="OfferFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionOffer">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="OfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferFileNoteOfferFile">
+          <End Role="OfferFile" Type="Self.OfferFile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferFileNote" Type="Self.OfferFileNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferFile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferFileNote">
+              <PropertyRef Name="OfferFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferFileReportOfferFile">
+          <End Role="OfferFile" Type="Self.OfferFile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferFileReport" Type="Self.OfferFileReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferFile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferFileReport">
+              <PropertyRef Name="OfferFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemCollectorOfferItem">
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItemCollector" Type="Self.OfferItemCollector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemCollector">
+              <PropertyRef Name="OfferItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemOfferVersionGroup">
+          <End Role="OfferVersionGroup" Type="Self.OfferVersionGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferVersionGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="OfferVersionGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemPropertyOfferItem">
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItemProperty" Type="Self.OfferItemProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemProperty">
+              <PropertyRef Name="OfferItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferItemScheduleOfferItem">
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferItemSchedule" Type="Self.OfferItemSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItemSchedule">
+              <PropertyRef Name="OfferItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionGroupOfferVersion">
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferVersionGroup" Type="Self.OfferVersionGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfferVersion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersionGroup">
+              <PropertyRef Name="OfferVersionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionPayment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fOfferVersionPriceType">
+          <End Role="PriceType" Type="Self.PriceType" Multiplicity="0..1" />
+          <End Role="OfferVersion" Type="Self.OfferVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferVersion">
+              <PropertyRef Name="PriceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerClientNoPartner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PartnerClientNo" Type="Self.PartnerClientNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PartnerClientNo">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerPartNo">
+          <End Role="PartNo" Type="Self.PartNo" Multiplicity="0..1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartNo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="PartNoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerPayment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPartnerPriceType">
+          <End Role="PriceType" Type="Self.PriceType" Multiplicity="1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="PriceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductDefaultSupplier">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DefaultSupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductPartNoPartNo">
+          <End Role="PartNo" Type="Self.PartNo" Multiplicity="1" />
+          <End Role="ProductPartNo" Type="Self.ProductPartNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartNo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPartNo">
+              <PropertyRef Name="PartNoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fPaymentPrintNamePayment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentPrintName" Type="Self.PaymentPrintName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentPrintName">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductNameProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductName" Type="Self.ProductName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductName">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fProductPartNoProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductPartNo" Type="Self.ProductPartNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPartNo">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressChannelVoucherAddress">
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VoucherAddressChannel" Type="Self.VoucherAddressChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddressChannel">
+              <PropertyRef Name="VoucherAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fVoucherAddressClientNoVoucherAddress">
+          <End Role="VoucherAddress" Type="Self.VoucherAddress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VoucherAddressClientNo" Type="Self.VoucherAddressClientNo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherAddress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VoucherAddressClientNo">
+              <PropertyRef Name="VoucherAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalesOfferEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Channel" EntityType="Self.Channel" />
+          <EntitySet Name="ChannelPrintName" EntityType="Self.ChannelPrintName" />
+          <EntitySet Name="Collector" EntityType="Self.Collector" />
+          <EntitySet Name="CollectorName" EntityType="Self.CollectorName" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="FileStore" EntityType="Self.FileStore" />
+          <EntitySet Name="Measure" EntityType="Self.Measure" />
+          <EntitySet Name="MeasureSign" EntityType="Self.MeasureSign" />
+          <EntitySet Name="Offer" EntityType="Self.Offer" />
+          <EntitySet Name="OfferFile" EntityType="Self.OfferFile" />
+          <EntitySet Name="OfferFileNote" EntityType="Self.OfferFileNote" />
+          <EntitySet Name="OfferFileReport" EntityType="Self.OfferFileReport" />
+          <EntitySet Name="OfferItem" EntityType="Self.OfferItem" />
+          <EntitySet Name="OfferItemCollector" EntityType="Self.OfferItemCollector" />
+          <EntitySet Name="OfferItemProperty" EntityType="Self.OfferItemProperty" />
+          <EntitySet Name="OfferItemSchedule" EntityType="Self.OfferItemSchedule" />
+          <EntitySet Name="OfferLinkOffer" EntityType="Self.OfferLinkOffer" />
+          <EntitySet Name="OfferVersion" EntityType="Self.OfferVersion" />
+          <EntitySet Name="OfferVersionGroup" EntityType="Self.OfferVersionGroup" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" />
+          <EntitySet Name="PartnerClientNo" EntityType="Self.PartnerClientNo" />
+          <EntitySet Name="PartNo" EntityType="Self.PartNo" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" />
+          <EntitySet Name="PaymentPrintName" EntityType="Self.PaymentPrintName" />
+          <EntitySet Name="PriceType" EntityType="Self.PriceType" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductName" EntityType="Self.ProductName" />
+          <EntitySet Name="ProductPartNo" EntityType="Self.ProductPartNo" />
+          <EntitySet Name="VoucherAddress" EntityType="Self.VoucherAddress" />
+          <EntitySet Name="VoucherAddressChannel" EntityType="Self.VoucherAddressChannel" />
+          <EntitySet Name="VoucherAddressClientNo" EntityType="Self.VoucherAddressClientNo" />
+          <AssociationSet Name="fChannelPrintNameChannel" Association="Self.fChannelPrintNameChannel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="ChannelPrintName" EntitySet="ChannelPrintName" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressChannelChannel" Association="Self.fVoucherAddressChannelChannel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="VoucherAddressChannel" EntitySet="VoucherAddressChannel" />
+          </AssociationSet>
+          <AssociationSet Name="fCollectorNameCollector" Association="Self.fCollectorNameCollector">
+            <End Role="Collector" EntitySet="Collector" />
+            <End Role="CollectorName" EntitySet="CollectorName" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemCollectorCollector" Association="Self.fOfferItemCollectorCollector">
+            <End Role="Collector" EntitySet="Collector" />
+            <End Role="OfferItemCollector" EntitySet="OfferItemCollector" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressContact" Association="Self.fVoucherAddressContact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+          </AssociationSet>
+          <AssociationSet Name="fDepartmentPartner" Association="Self.fDepartmentPartner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressDepartment" Association="Self.fVoucherAddressDepartment">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionFileStore" Association="Self.fOfferVersionFileStore">
+            <End Role="FileStore" EntitySet="FileStore" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fMeasureSignMeasure" Association="Self.fMeasureSignMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="MeasureSign" EntitySet="MeasureSign" />
+          </AssociationSet>
+          <AssociationSet Name="fProductMeasure" Association="Self.fProductMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fProductPackagingMeasure" Association="Self.fProductPackagingMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fProductSecondaryMeasure" Association="Self.fProductSecondaryMeasure">
+            <End Role="Measure" EntitySet="Measure" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferAgentPartner" Association="Self.fOfferAgentPartner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferOfferFile" Association="Self.fOfferOfferFile">
+            <End Role="OfferFile" EntitySet="OfferFile" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionOffer" Association="Self.fOfferVersionOffer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferFileNoteOfferFile" Association="Self.fOfferFileNoteOfferFile">
+            <End Role="OfferFile" EntitySet="OfferFile" />
+            <End Role="OfferFileNote" EntitySet="OfferFileNote" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferFileReportOfferFile" Association="Self.fOfferFileReportOfferFile">
+            <End Role="OfferFile" EntitySet="OfferFile" />
+            <End Role="OfferFileReport" EntitySet="OfferFileReport" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemCollectorOfferItem" Association="Self.fOfferItemCollectorOfferItem">
+            <End Role="OfferItem" EntitySet="OfferItem" />
+            <End Role="OfferItemCollector" EntitySet="OfferItemCollector" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemOfferVersionGroup" Association="Self.fOfferItemOfferVersionGroup">
+            <End Role="OfferVersionGroup" EntitySet="OfferVersionGroup" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemProduct" Association="Self.fOfferItemProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemPropertyOfferItem" Association="Self.fOfferItemPropertyOfferItem">
+            <End Role="OfferItem" EntitySet="OfferItem" />
+            <End Role="OfferItemProperty" EntitySet="OfferItemProperty" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferItemScheduleOfferItem" Association="Self.fOfferItemScheduleOfferItem">
+            <End Role="OfferItem" EntitySet="OfferItem" />
+            <End Role="OfferItemSchedule" EntitySet="OfferItemSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionGroupOfferVersion" Association="Self.fOfferVersionGroupOfferVersion">
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+            <End Role="OfferVersionGroup" EntitySet="OfferVersionGroup" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionPayment" Association="Self.fOfferVersionPayment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fOfferVersionPriceType" Association="Self.fOfferVersionPriceType">
+            <End Role="PriceType" EntitySet="PriceType" />
+            <End Role="OfferVersion" EntitySet="OfferVersion" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerClientNoPartner" Association="Self.fPartnerClientNoPartner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="PartnerClientNo" EntitySet="PartnerClientNo" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerPartNo" Association="Self.fPartnerPartNo">
+            <End Role="PartNo" EntitySet="PartNo" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerPayment" Association="Self.fPartnerPayment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="fPartnerPriceType" Association="Self.fPartnerPriceType">
+            <End Role="PriceType" EntitySet="PriceType" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="fProductDefaultSupplier" Association="Self.fProductDefaultSupplier">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fProductPartNoPartNo" Association="Self.fProductPartNoPartNo">
+            <End Role="PartNo" EntitySet="PartNo" />
+            <End Role="ProductPartNo" EntitySet="ProductPartNo" />
+          </AssociationSet>
+          <AssociationSet Name="fPaymentPrintNamePayment" Association="Self.fPaymentPrintNamePayment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="PaymentPrintName" EntitySet="PaymentPrintName" />
+          </AssociationSet>
+          <AssociationSet Name="fProductNameProduct" Association="Self.fProductNameProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductName" EntitySet="ProductName" />
+          </AssociationSet>
+          <AssociationSet Name="fProductPartNoProduct" Association="Self.fProductPartNoProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPartNo" EntitySet="ProductPartNo" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressChannelVoucherAddress" Association="Self.fVoucherAddressChannelVoucherAddress">
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+            <End Role="VoucherAddressChannel" EntitySet="VoucherAddressChannel" />
+          </AssociationSet>
+          <AssociationSet Name="fVoucherAddressClientNoVoucherAddress" Association="Self.fVoucherAddressClientNoVoucherAddress">
+            <End Role="VoucherAddress" EntitySet="VoucherAddress" />
+            <End Role="VoucherAddressClientNo" EntitySet="VoucherAddressClientNo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalesOfferModelStoreContainer" CdmEntityContainer="SalesOfferEntities">
+          <EntitySetMapping Name="Channel">
+            <EntityTypeMapping TypeName="SalesOfferModel.Channel">
+              <MappingFragment StoreEntitySet="Channel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ValidatorId" ColumnName="ValidatorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChannelPrintName">
+            <EntityTypeMapping TypeName="SalesOfferModel.ChannelPrintName">
+              <MappingFragment StoreEntitySet="ChannelPrintName">
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Collector">
+            <EntityTypeMapping TypeName="SalesOfferModel.Collector">
+              <MappingFragment StoreEntitySet="Collector">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AvatarID" ColumnName="AvatarID" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
+                <ScalarProperty Name="DefaultCategoryId" ColumnName="DefaultCategoryId" />
+                <ScalarProperty Name="StockRelated" ColumnName="StockRelated" />
+                <ScalarProperty Name="LedgerRelated" ColumnName="LedgerRelated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollectorName">
+            <EntityTypeMapping TypeName="SalesOfferModel.CollectorName">
+              <MappingFragment StoreEntitySet="CollectorName">
+                <ScalarProperty Name="CollectorId" ColumnName="CollectorId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="SalesOfferModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="AvatarId" ColumnName="AvatarId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="NameDay" ColumnName="NameDay" />
+                <ScalarProperty Name="FileAs" ColumnName="FileAs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="SalesOfferModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="RealAddrInherited" ColumnName="RealAddrInherited" />
+                <ScalarProperty Name="RealCountryId" ColumnName="RealCountryId" />
+                <ScalarProperty Name="RealStreet" ColumnName="RealStreet" />
+                <ScalarProperty Name="RealCity" ColumnName="RealCity" />
+                <ScalarProperty Name="RealRegion" ColumnName="RealRegion" />
+                <ScalarProperty Name="RealZip" ColumnName="RealZip" />
+                <ScalarProperty Name="RealAddress" ColumnName="RealAddress" />
+                <ScalarProperty Name="PostAddrReal" ColumnName="PostAddrReal" />
+                <ScalarProperty Name="PostAddrInherited" ColumnName="PostAddrInherited" />
+                <ScalarProperty Name="PostCountryId" ColumnName="PostCountryId" />
+                <ScalarProperty Name="PostStreet" ColumnName="PostStreet" />
+                <ScalarProperty Name="PostCity" ColumnName="PostCity" />
+                <ScalarProperty Name="PostRegion" ColumnName="PostRegion" />
+                <ScalarProperty Name="PostZip" ColumnName="PostZip" />
+                <ScalarProperty Name="PostAddress" ColumnName="PostAddress" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GLN" ColumnName="GLN" />
+                <ScalarProperty Name="ExciseAuthorisationNumber" ColumnName="ExciseAuthorisationNumber" />
+                <ScalarProperty Name="InvoiceAddress" ColumnName="InvoiceAddress" />
+                <ScalarProperty Name="InvoicePostAddress" ColumnName="InvoicePostAddress" />
+                <ScalarProperty Name="VoucherName" ColumnName="VoucherName" />
+                <ScalarProperty Name="RealDistrict" ColumnName="RealDistrict" />
+                <ScalarProperty Name="RealPublicPlaceName" ColumnName="RealPublicPlaceName" />
+                <ScalarProperty Name="RealPublicPlaceKind" ColumnName="RealPublicPlaceKind" />
+                <ScalarProperty Name="RealPublicPlaceNumber" ColumnName="RealPublicPlaceNumber" />
+                <ScalarProperty Name="RealBuilding" ColumnName="RealBuilding" />
+                <ScalarProperty Name="RealStairWay" ColumnName="RealStairWay" />
+                <ScalarProperty Name="RealStorey" ColumnName="RealStorey" />
+                <ScalarProperty Name="RealDoorNumber" ColumnName="RealDoorNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileStore">
+            <EntityTypeMapping TypeName="SalesOfferModel.FileStore">
+              <MappingFragment StoreEntitySet="FileStore">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="SrcAvatarId" ColumnName="SrcAvatarId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="AccessLevelId" ColumnName="AccessLevelId" />
+                <ScalarProperty Name="IsGenerated" ColumnName="IsGenerated" />
+                <ScalarProperty Name="IsArchiveable" ColumnName="IsArchiveable" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OriginalName" ColumnName="OriginalName" />
+                <ScalarProperty Name="OriginalDate" ColumnName="OriginalDate" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="ODMAID" ColumnName="ODMAID" />
+                <ScalarProperty Name="ArchiveDb" ColumnName="ArchiveDb" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="LinkedText" ColumnName="LinkedText" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="IsSigned" ColumnName="IsSigned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Measure">
+            <EntityTypeMapping TypeName="SalesOfferModel.Measure">
+              <MappingFragment StoreEntitySet="Measure">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AvatarId" ColumnName="AvatarId" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeasureSign">
+            <EntityTypeMapping TypeName="SalesOfferModel.MeasureSign">
+              <MappingFragment StoreEntitySet="MeasureSign">
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="MeasureId" ColumnName="MeasureId" />
+                <ScalarProperty Name="Sign" ColumnName="Sign" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offer">
+            <EntityTypeMapping TypeName="SalesOfferModel.Offer">
+              <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="AvatarId" ColumnName="AvatarId" />
+                <ScalarProperty Name="OfferFileId" ColumnName="OfferFileId" />
+                <ScalarProperty Name="OrdinalNumber" ColumnName="OrdinalNumber" />
+                <ScalarProperty Name="AgentPartnerId" ColumnName="AgentPartnerId" />
+                <ScalarProperty Name="SrcProjectId" ColumnName="SrcProjectId" />
+                <ScalarProperty Name="MarketingChannelId" ColumnName="MarketingChannelId" />
+                <ScalarProperty Name="VoucherNum" ColumnName="VoucherNum" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="ResponsibleEmployeeId" ColumnName="ResponsibleEmployeeId" />
+                <ScalarProperty Name="BruttoCalcMode" ColumnName="BruttoCalcMode" />
+                <ScalarProperty Name="HeadNote" ColumnName="HeadNote" />
+                <ScalarProperty Name="FootNote" ColumnName="FootNote" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="OutputFormat" ColumnName="OutputFormat" />
+                <ScalarProperty Name="InputFormat" ColumnName="InputFormat" />
+                <ScalarProperty Name="CancellationState" ColumnName="CancellationState" />
+                <ScalarProperty Name="InCoTermId" ColumnName="InCoTermId" />
+                <ScalarProperty Name="InCoTermSrc" ColumnName="InCoTermSrc" />
+                <ScalarProperty Name="InCoTermDst" ColumnName="InCoTermDst" />
+                <ScalarProperty Name="InCoTermDocNr" ColumnName="InCoTermDocNr" />
+                <ScalarProperty Name="TransportModeId" ColumnName="TransportModeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferFile">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferFile">
+              <MappingFragment StoreEntitySet="OfferFile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="AvatarId" ColumnName="AvatarId" />
+                <ScalarProperty Name="TaxYearId" ColumnName="TaxYearId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrentCounter" ColumnName="CurrentCounter" />
+                <ScalarProperty Name="VoucherSign" ColumnName="VoucherSign" />
+                <ScalarProperty Name="NullVoucherNum" ColumnName="NullVoucherNum" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="RoundItem" ColumnName="RoundItem" />
+                <ScalarProperty Name="RoundVat" ColumnName="RoundVat" />
+                <ScalarProperty Name="RoundTotal" ColumnName="RoundTotal" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="DefaultTransactionTypeId" ColumnName="DefaultTransactionTypeId" />
+                <ScalarProperty Name="DefaultOrderFileId" ColumnName="DefaultOrderFileId" />
+                <ScalarProperty Name="DisContinued" ColumnName="DisContinued" />
+                <ScalarProperty Name="VoucherCopyEmailing" ColumnName="VoucherCopyEmailing" />
+                <ScalarProperty Name="PrepaymentFileId" ColumnName="PrepaymentFileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferFileNote">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferFileNote">
+              <MappingFragment StoreEntitySet="OfferFileNote">
+                <ScalarProperty Name="OfferFileId" ColumnName="OfferFileId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="HeadNote" ColumnName="HeadNote" />
+                <ScalarProperty Name="FootNote" ColumnName="FootNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferFileReport">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferFileReport">
+              <MappingFragment StoreEntitySet="OfferFileReport">
+                <ScalarProperty Name="OfferFileId" ColumnName="OfferFileId" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="Copies" ColumnName="Copies" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferItem">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferItem">
+              <MappingFragment StoreEntitySet="OfferItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OfferVersionGroupId" ColumnName="OfferVersionGroupId" />
+                <ScalarProperty Name="OrdinalNumber" ColumnName="OrdinalNumber" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ReferencePartNo" ColumnName="ReferencePartNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Measure" ColumnName="Measure" />
+                <ScalarProperty Name="BaseUnitPrice" ColumnName="BaseUnitPrice" />
+                <ScalarProperty Name="OffUnitPrice" ColumnName="OffUnitPrice" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="BaseAmount" ColumnName="BaseAmount" />
+                <ScalarProperty Name="OffAmount" ColumnName="OffAmount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BaseTax" ColumnName="BaseTax" />
+                <ScalarProperty Name="OffTax" ColumnName="OffTax" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="BaseTotal" ColumnName="BaseTotal" />
+                <ScalarProperty Name="OffTotal" ColumnName="OffTotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="IsDiscountPercent" ColumnName="IsDiscountPercent" />
+                <ScalarProperty Name="IsOption" ColumnName="IsOption" />
+                <ScalarProperty Name="DeliveryTimeValue" ColumnName="DeliveryTimeValue" />
+                <ScalarProperty Name="DeliveryTimeUnit" ColumnName="DeliveryTimeUnit" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ClientPartNo" ColumnName="ClientPartNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferItemCollector">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferItemCollector">
+              <MappingFragment StoreEntitySet="OfferItemCollector">
+                <ScalarProperty Name="OfferItemId" ColumnName="OfferItemId" />
+                <ScalarProperty Name="CollectorId" ColumnName="CollectorId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Percent" ColumnName="Percent" />
+                <ScalarProperty Name="IsPercent" ColumnName="IsPercent" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="StockRelated" ColumnName="StockRelated" />
+                <ScalarProperty Name="LedgerRelated" ColumnName="LedgerRelated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferItemProperty">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferItemProperty">
+              <MappingFragment StoreEntitySet="OfferItemProperty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OfferItemId" ColumnName="OfferItemId" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferItemSchedule">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferItemSchedule">
+              <MappingFragment StoreEntitySet="OfferItemSchedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OfferItemId" ColumnName="OfferItemId" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferLinkOffer">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferLinkOffer">
+              <MappingFragment StoreEntitySet="OfferLinkOffer">
+                <ScalarProperty Name="FromOfferId" ColumnName="FromOfferId" />
+                <ScalarProperty Name="ToOfferId" ColumnName="ToOfferId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferVersion">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferVersion">
+              <MappingFragment StoreEntitySet="OfferVersion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="VersionDate" ColumnName="VersionDate" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ImageFileStoreId" ColumnName="ImageFileStoreId" />
+                <ScalarProperty Name="PriceTypeId" ColumnName="PriceTypeId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="DefaultDiscountPercent" ColumnName="DefaultDiscountPercent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferVersionGroup">
+            <EntityTypeMapping TypeName="SalesOfferModel.OfferVersionGroup">
+              <MappingFragment StoreEntitySet="OfferVersionGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OfferVersionId" ColumnName="OfferVersionId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="HeadNote" ColumnName="HeadNote" />
+                <ScalarProperty Name="FootNote" ColumnName="FootNote" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="BaseAmount" ColumnName="BaseAmount" />
+                <ScalarProperty Name="BaseTax" ColumnName="BaseTax" />
+                <ScalarProperty Name="BaseTotal" ColumnName="BaseTotal" />
+                <ScalarProperty Name="OffAmount" ColumnName="OffAmount" />
+                <ScalarProperty Name="OffTax" ColumnName="OffTax" />
+                <ScalarProperty Name="OffTotal" ColumnName="OffTotal" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PrepaymentNeeded" ColumnName="PrepaymentNeeded" />
+                <ScalarProperty Name="PrepaymentAmount" ColumnName="PrepaymentAmount" />
+                <ScalarProperty Name="PrepaymentPercent" ColumnName="PrepaymentPercent" />
+                <ScalarProperty Name="PrepaymentIsPercent" ColumnName="PrepaymentIsPercent" />
+                <ScalarProperty Name="PrepaymentId" ColumnName="PrepaymentId" />
+                <ScalarProperty Name="InvoiceCurrencyId" ColumnName="InvoiceCurrencyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partner">
+            <EntityTypeMapping TypeName="SalesOfferModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="AvatarId" ColumnName="AvatarId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PriceTypeId" ColumnName="PriceTypeId" />
+                <ScalarProperty Name="PartNoId" ColumnName="PartNoId" />
+                <ScalarProperty Name="DefaultCurrencyId" ColumnName="DefaultCurrencyId" />
+                <ScalarProperty Name="DefaultEcoTaxCode" ColumnName="DefaultEcoTaxCode" />
+                <ScalarProperty Name="VatRegistated" ColumnName="VatRegistated" />
+                <ScalarProperty Name="CashAccounting" ColumnName="CashAccounting" />
+                <ScalarProperty Name="DelayCostLump" ColumnName="DelayCostLump" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="ReceivesEInvoiceFrom" ColumnName="ReceivesEInvoiceFrom" />
+                <ScalarProperty Name="ReceivesEInvoiceTo" ColumnName="ReceivesEInvoiceTo" />
+                <ScalarProperty Name="SendsEInvoiceFrom" ColumnName="SendsEInvoiceFrom" />
+                <ScalarProperty Name="SendsEInvoiceTo" ColumnName="SendsEInvoiceTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerClientNo">
+            <EntityTypeMapping TypeName="SalesOfferModel.PartnerClientNo">
+              <MappingFragment StoreEntitySet="PartnerClientNo">
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="ClientNoId" ColumnName="ClientNoId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartNo">
+            <EntityTypeMapping TypeName="SalesOfferModel.PartNo">
+              <MappingFragment StoreEntitySet="PartNo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ValidatorId" ColumnName="ValidatorId" />
+                <ScalarProperty Name="GeneratorId" ColumnName="GeneratorId" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="Required" ColumnName="Required" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="SalesOfferModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Prompt" ColumnName="Prompt" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="ScontoDays" ColumnName="ScontoDays" />
+                <ScalarProperty Name="ScontoRate" ColumnName="ScontoRate" />
+                <ScalarProperty Name="PromptRelationType" ColumnName="PromptRelationType" />
+                <ScalarProperty Name="InvoiceFinalizationAcquittance" ColumnName="InvoiceFinalizationAcquittance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentPrintName">
+            <EntityTypeMapping TypeName="SalesOfferModel.PaymentPrintName">
+              <MappingFragment StoreEntitySet="PaymentPrintName">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceType">
+            <EntityTypeMapping TypeName="SalesOfferModel.PriceType">
+              <MappingFragment StoreEntitySet="PriceType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="SalesOfferModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="AvatarId" ColumnName="AvatarId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="StockCurrencyId" ColumnName="StockCurrencyId" />
+                <ScalarProperty Name="MeasureId" ColumnName="MeasureId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="StockManagement" ColumnName="StockManagement" />
+                <ScalarProperty Name="NetMass" ColumnName="NetMass" />
+                <ScalarProperty Name="BrtMass" ColumnName="BrtMass" />
+                <ScalarProperty Name="MassQty" ColumnName="MassQty" />
+                <ScalarProperty Name="PriceQty" ColumnName="PriceQty" />
+                <ScalarProperty Name="IntrastatCtId" ColumnName="IntrastatCtId" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
+                <ScalarProperty Name="IdentOnOut" ColumnName="IdentOnOut" />
+                <ScalarProperty Name="ProductRevenuesGroupId" ColumnName="ProductRevenuesGroupId" />
+                <ScalarProperty Name="ProductBookingGroupId" ColumnName="ProductBookingGroupId" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="CostPriceRate" ColumnName="CostPriceRate" />
+                <ScalarProperty Name="ExciseMonitoring" ColumnName="ExciseMonitoring" />
+                <ScalarProperty Name="EcoTaxContainer" ColumnName="EcoTaxContainer" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ValidDateNecessaryOnInput" ColumnName="ValidDateNecessaryOnInput" />
+                <ScalarProperty Name="DefaultSupplier" ColumnName="DefaultSupplier" />
+                <ScalarProperty Name="BarcodeLabelCopies" ColumnName="BarcodeLabelCopies" />
+                <ScalarProperty Name="PackagingMeasureId" ColumnName="PackagingMeasureId" />
+                <ScalarProperty Name="PackagingQuantity" ColumnName="PackagingQuantity" />
+                <ScalarProperty Name="PackageIsOpenable" ColumnName="PackageIsOpenable" />
+                <ScalarProperty Name="StandardCosting" ColumnName="StandardCosting" />
+                <ScalarProperty Name="Colli" ColumnName="Colli" />
+                <ScalarProperty Name="BAFCN" ColumnName="BAFCN" />
+                <ScalarProperty Name="OutOfIntrastat" ColumnName="OutOfIntrastat" />
+                <ScalarProperty Name="SecondaryMeasureId" ColumnName="SecondaryMeasureId" />
+                <ScalarProperty Name="SecondaryMeasureUsage" ColumnName="SecondaryMeasureUsage" />
+                <ScalarProperty Name="Mediated" ColumnName="Mediated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductName">
+            <EntityTypeMapping TypeName="SalesOfferModel.ProductName">
+              <MappingFragment StoreEntitySet="ProductName">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPartNo">
+            <EntityTypeMapping TypeName="SalesOfferModel.ProductPartNo">
+              <MappingFragment StoreEntitySet="ProductPartNo">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PartNoId" ColumnName="PartNoId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoucherAddress">
+            <EntityTypeMapping TypeName="SalesOfferModel.VoucherAddress">
+              <MappingFragment StoreEntitySet="VoucherAddress">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SrcAvatarId" ColumnName="SrcAvatarId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="GLN" ColumnName="GLN" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="PublicPlaceName" ColumnName="PublicPlaceName" />
+                <ScalarProperty Name="PublicPlaceKind" ColumnName="PublicPlaceKind" />
+                <ScalarProperty Name="PublicPlaceNumber" ColumnName="PublicPlaceNumber" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="StairWay" ColumnName="StairWay" />
+                <ScalarProperty Name="Storey" ColumnName="Storey" />
+                <ScalarProperty Name="DoorNumber" ColumnName="DoorNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoucherAddressChannel">
+            <EntityTypeMapping TypeName="SalesOfferModel.VoucherAddressChannel">
+              <MappingFragment StoreEntitySet="VoucherAddressChannel">
+                <ScalarProperty Name="VoucherAddressId" ColumnName="VoucherAddressId" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="report" ColumnName="report" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoucherAddressClientNo">
+            <EntityTypeMapping TypeName="SalesOfferModel.VoucherAddressClientNo">
+              <MappingFragment StoreEntitySet="VoucherAddressClientNo">
+                <ScalarProperty Name="VoucherAddressId" ColumnName="VoucherAddressId" />
+                <ScalarProperty Name="ClientNoId" ColumnName="ClientNoId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="report" ColumnName="report" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1AB3429B-73C4-43F4-A77F-61AD4C5198EB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SalesOfferBrowser</RootNamespace>
+    <AssemblyName>SalesOfferBrowser</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Channel.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChannelPrintName.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Collector.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CollectorName.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FileStore.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Measure.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasureSign.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ObservableListSource.cs" />
+    <Compile Include="Offer.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferFile.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferFileNote.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferFileReport.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferItem.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferItemCollector.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferItemProperty.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferItemSchedule.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferLinkOffer.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferVersion.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferVersionGroup.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partner.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartnerClientNo.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartNo.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentPrintName.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PriceType.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductName.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductPartNo.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesOfferModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesOfferModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOfferModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOfferModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesOfferModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherAddress.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherAddressChannel.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherAddressClientNo.cs">
+      <DependentUpon>SalesOfferModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Offer.datasource" />
+    <None Include="Properties\DataSources\OfferFile.datasource" />
+    <None Include="Properties\DataSources\OfferItem.datasource" />
+    <None Include="Properties\DataSources\OfferVersion.datasource" />
+    <None Include="Properties\DataSources\OfferVersionGroup.datasource" />
+    <None Include="Properties\DataSources\SalesOfferBrowser.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\VoucherAddress.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="SalesOfferModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SalesOfferModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SalesOfferModel.edmx.diagram">
+      <DependentUpon>SalesOfferModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetroFramework.txt" />
+    <Content Include="SalesOfferModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SalesOfferModel.edmx</DependentUpon>
+      <LastGenOutput>SalesOfferModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SalesOfferModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SalesOfferModel.edmx</DependentUpon>
+      <LastGenOutput>SalesOfferModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
