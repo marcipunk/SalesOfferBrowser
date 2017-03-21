@@ -78,9 +78,10 @@
             // issueDateLabel
             // 
             issueDateLabel.AutoSize = true;
-            issueDateLabel.Location = new System.Drawing.Point(14, 20);
+            issueDateLabel.Location = new System.Drawing.Point(19, 25);
+            issueDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             issueDateLabel.Name = "issueDateLabel";
-            issueDateLabel.Size = new System.Drawing.Size(61, 13);
+            issueDateLabel.Size = new System.Drawing.Size(79, 17);
             issueDateLabel.TabIndex = 3;
             issueDateLabel.Text = "Issue Date:";
             // 
@@ -93,9 +94,10 @@
             this.voucherNumMetroLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.offerBindingSource, "VoucherNum", true));
             this.voucherNumMetroLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.voucherNumMetroLabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.voucherNumMetroLabel.Location = new System.Drawing.Point(427, 34);
+            this.voucherNumMetroLabel.Location = new System.Drawing.Point(569, 42);
+            this.voucherNumMetroLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.voucherNumMetroLabel.Name = "voucherNumMetroLabel";
-            this.voucherNumMetroLabel.Size = new System.Drawing.Size(196, 23);
+            this.voucherNumMetroLabel.Size = new System.Drawing.Size(261, 28);
             this.voucherNumMetroLabel.TabIndex = 1;
             this.voucherNumMetroLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.voucherNumMetroLabel.UseStyleColors = true;
@@ -108,21 +110,23 @@
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(20, 60);
+            this.metroPanel1.HorizontalScrollbarSize = 12;
+            this.metroPanel1.Location = new System.Drawing.Point(27, 74);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(603, 421);
+            this.metroPanel1.Size = new System.Drawing.Size(803, 518);
             this.metroPanel1.TabIndex = 2;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.VerticalScrollbarSize = 13;
             // 
             // labIssueDate
             // 
             this.labIssueDate.AutoSize = true;
-            this.labIssueDate.Location = new System.Drawing.Point(82, 19);
+            this.labIssueDate.Location = new System.Drawing.Point(106, 25);
+            this.labIssueDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labIssueDate.Name = "labIssueDate";
-            this.labIssueDate.Size = new System.Drawing.Size(0, 13);
+            this.labIssueDate.Size = new System.Drawing.Size(0, 17);
             this.labIssueDate.TabIndex = 4;
             // 
             // dataGridView1
@@ -165,9 +169,10 @@
             this.offerVersionGroupDataGridViewTextBoxColumn,
             this.productDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.offerItemBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 53);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 65);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(603, 368);
+            this.dataGridView1.Size = new System.Drawing.Size(803, 453);
             this.dataGridView1.TabIndex = 2;
             // 
             // idDataGridViewTextBoxColumn
@@ -360,13 +365,15 @@
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(643, 501);
+            this.ClientSize = new System.Drawing.Size(857, 617);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.voucherNumMetroLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form2";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Offer";
             this.Theme = MetroFramework.MetroThemeStyle.Light;
             ((System.ComponentModel.ISupportInitialize)(this.offerBindingSource)).EndInit();

@@ -100,6 +100,8 @@
             this.labOffer = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.offerTypeBindignSource = new System.Windows.Forms.BindingSource(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.offerFileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerBindingSource)).BeginInit();
@@ -109,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.offerItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerTypeBindignSource)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // offerFileComboBox
@@ -116,7 +119,7 @@
             this.offerFileComboBox.DataSource = this.offerFileBindingSource;
             this.offerFileComboBox.DisplayMember = "Name";
             this.offerFileComboBox.FormattingEnabled = true;
-            this.offerFileComboBox.Location = new System.Drawing.Point(227, 27);
+            this.offerFileComboBox.Location = new System.Drawing.Point(84, 63);
             this.offerFileComboBox.Name = "offerFileComboBox";
             this.offerFileComboBox.Size = new System.Drawing.Size(300, 24);
             this.offerFileComboBox.TabIndex = 1;
@@ -137,26 +140,26 @@
             this.dataGridViewTextBoxColumn32,
             this.dataGridViewCheckBoxColumn40});
             this.offerDataGridView.DataSource = this.offerBindingSource;
-            this.offerDataGridView.Location = new System.Drawing.Point(23, 103);
+            this.offerDataGridView.Location = new System.Drawing.Point(23, 132);
             this.offerDataGridView.Name = "offerDataGridView";
-            this.offerDataGridView.ReadOnly = true;
             this.offerDataGridView.Size = new System.Drawing.Size(300, 220);
             this.offerDataGridView.TabIndex = 2;
+            this.offerDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offerDataGridView_CellContentClick_1);
             this.offerDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offerDataGridView_CellContentClick);
+            this.offerDataGridView.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.offerDataGridView_CellLeave);
+            this.offerDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.offerDataGridView_CellMouseClick);
             // 
             // dataGridViewTextBoxColumn31
             // 
             this.dataGridViewTextBoxColumn31.DataPropertyName = "VoucherNum";
             this.dataGridViewTextBoxColumn31.HeaderText = "VoucherNum";
             this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn32
             // 
             this.dataGridViewTextBoxColumn32.DataPropertyName = "TypeId";
             this.dataGridViewTextBoxColumn32.HeaderText = "TypeId";
             this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
-            this.dataGridViewTextBoxColumn32.ReadOnly = true;
             this.dataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn32.Width = 60;
             // 
@@ -167,7 +170,6 @@
             this.dataGridViewCheckBoxColumn40.HeaderText = "Cancelled";
             this.dataGridViewCheckBoxColumn40.IndeterminateValue = "";
             this.dataGridViewCheckBoxColumn40.Name = "dataGridViewCheckBoxColumn40";
-            this.dataGridViewCheckBoxColumn40.ReadOnly = true;
             this.dataGridViewCheckBoxColumn40.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewCheckBoxColumn40.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewCheckBoxColumn40.TrueValue = "1";
@@ -212,7 +214,7 @@
             this.dataGridViewTextBoxColumn39,
             this.dataGridViewTextBoxColumn41});
             this.offerVersionGroupDataGridView.DataSource = this.offerVersionGroupBindingSource;
-            this.offerVersionGroupDataGridView.Location = new System.Drawing.Point(361, 103);
+            this.offerVersionGroupDataGridView.Location = new System.Drawing.Point(361, 133);
             this.offerVersionGroupDataGridView.Name = "offerVersionGroupDataGridView";
             this.offerVersionGroupDataGridView.Size = new System.Drawing.Size(659, 220);
             this.offerVersionGroupDataGridView.TabIndex = 6;
@@ -401,7 +403,7 @@
             this.dataGridViewTextBoxColumn68,
             this.dataGridViewTextBoxColumn69});
             this.offerItemDataGridView.DataSource = this.offerItemBindingSource;
-            this.offerItemDataGridView.Location = new System.Drawing.Point(23, 383);
+            this.offerItemDataGridView.Location = new System.Drawing.Point(23, 412);
             this.offerItemDataGridView.Name = "offerItemDataGridView";
             this.offerItemDataGridView.Size = new System.Drawing.Size(997, 220);
             this.offerItemDataGridView.TabIndex = 6;
@@ -412,25 +414,28 @@
             this.dataGridViewTextBoxColumn42.DataPropertyName = "Id";
             this.dataGridViewTextBoxColumn42.HeaderText = "Id";
             this.dataGridViewTextBoxColumn42.Name = "dataGridViewTextBoxColumn42";
-            this.dataGridViewTextBoxColumn42.Width = 48;
+            this.dataGridViewTextBoxColumn42.Visible = false;
             // 
             // dataGridViewTextBoxColumn43
             // 
             this.dataGridViewTextBoxColumn43.DataPropertyName = "OfferVersionGroupId";
             this.dataGridViewTextBoxColumn43.HeaderText = "OfferVersionGroupId";
             this.dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
+            this.dataGridViewTextBoxColumn43.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn44
             // 
             this.dataGridViewTextBoxColumn44.DataPropertyName = "OrdinalNumber";
             this.dataGridViewTextBoxColumn44.HeaderText = "OrdinalNumber";
             this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
+            this.dataGridViewTextBoxColumn44.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn45
             // 
             this.dataGridViewTextBoxColumn45.DataPropertyName = "ProductId";
             this.dataGridViewTextBoxColumn45.HeaderText = "ProductId";
             this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
+            this.dataGridViewTextBoxColumn45.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn46
             // 
@@ -596,7 +601,7 @@
             // OfferVersionGroup
             // 
             this.OfferVersionGroup.AutoSize = true;
-            this.OfferVersionGroup.Location = new System.Drawing.Point(361, 78);
+            this.OfferVersionGroup.Location = new System.Drawing.Point(361, 107);
             this.OfferVersionGroup.Name = "OfferVersionGroup";
             this.OfferVersionGroup.Size = new System.Drawing.Size(126, 20);
             this.OfferVersionGroup.TabIndex = 8;
@@ -605,7 +610,7 @@
             // OfferItem
             // 
             this.OfferItem.AutoSize = true;
-            this.OfferItem.Location = new System.Drawing.Point(23, 360);
+            this.OfferItem.Location = new System.Drawing.Point(23, 389);
             this.OfferItem.Name = "OfferItem";
             this.OfferItem.Size = new System.Drawing.Size(68, 20);
             this.OfferItem.TabIndex = 9;
@@ -614,7 +619,7 @@
             // labOffer
             // 
             this.labOffer.AutoSize = true;
-            this.labOffer.Location = new System.Drawing.Point(23, 78);
+            this.labOffer.Location = new System.Drawing.Point(23, 107);
             this.labOffer.Name = "labOffer";
             this.labOffer.Size = new System.Drawing.Size(41, 20);
             this.labOffer.TabIndex = 10;
@@ -626,18 +631,35 @@
             this.metroComboBox1.DisplayMember = "TypeId";
             this.metroComboBox1.FormattingEnabled = true;
             this.metroComboBox1.ItemHeight = 24;
-            this.metroComboBox1.Location = new System.Drawing.Point(84, 68);
+            this.metroComboBox1.Location = new System.Drawing.Point(84, 97);
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.Size = new System.Drawing.Size(148, 30);
             this.metroComboBox1.TabIndex = 11;
             this.metroComboBox1.ValueMember = "TypeId";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(20, 60);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1003, 28);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.helpToolStripMenuItem.Text = "File:";
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1043, 639);
+            this.ClientSize = new System.Drawing.Size(1043, 691);
             this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.labOffer);
             this.Controls.Add(this.OfferItem);
@@ -646,11 +668,14 @@
             this.Controls.Add(this.offerVersionGroupDataGridView);
             this.Controls.Add(this.offerDataGridView);
             this.Controls.Add(this.offerFileComboBox);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "SalesOfferBrowser";
             this.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.offerFileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerBindingSource)).EndInit();
@@ -660,6 +685,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.offerItemDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offerTypeBindignSource)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,36 +703,6 @@
         private System.Windows.Forms.DataGridView offerVersionGroupDataGridView;
         private System.Windows.Forms.BindingSource offerItemBindingSource;
         private System.Windows.Forms.DataGridView offerItemDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn53;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn54;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn55;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn56;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn57;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn58;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn59;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn60;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn61;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn62;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn63;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn64;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn65;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn66;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn67;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn68;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn69;
         private MetroFramework.Controls.MetroLabel OfferVersionGroup;
         private MetroFramework.Controls.MetroLabel OfferItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
@@ -737,6 +734,38 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn40;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn53;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn54;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn55;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn56;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn57;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn58;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn59;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn60;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn61;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn62;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn63;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn64;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn65;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn66;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn67;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn68;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn69;
     }
 }
 

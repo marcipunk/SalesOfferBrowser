@@ -56,7 +56,7 @@ namespace SalesOfferBrowser
             IBindingList list = SOE.OfferFile.Local.ToBindingList();
 
             this.offerFileBindingSource.DataSource = list;
-
+            this.offerBindingSource.DataSource = list;
             list.ListChanged += List_ListChanged;
 
             //SOE.OfferVersionGroup.Load();
@@ -70,7 +70,7 @@ namespace SalesOfferBrowser
 
         private void List_ListChanged(object sender, ListChangedEventArgs e)
         {
-            SOE.SaveChanges();
+            this.SOE.SaveChanges();
         }
 
         private void offerDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -93,7 +93,38 @@ namespace SalesOfferBrowser
             }
         }
 
+        private void offerDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
 
+        private void offerDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button== MouseButtons.Right)
+            {
+                offerDataGridView.CurrentCell = offerDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                ContextMenu menu = new ContextMenu();
+                MenuItem item = new MenuItem("Modify");
+                menu.MenuItems.Add(item);
+                offerDataGridView.ContextMenu = menu;
+                item.Click += Item_Click;
 
+            }
+        }
+
+        private void Item_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("menu");
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //this.SOE.SaveChanges();
+        }
+
+        private void offerDataGridView_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SOE.SaveChanges();
+        }
     }
 }
